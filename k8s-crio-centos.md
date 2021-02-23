@@ -283,3 +283,31 @@ spec:
   versionPriority: 100
 ```
 
+```
+# kubectl apply -y metrics-server.yaml
+# kubectl top nodes
+NAME      CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
+kuber01   182m         2%     1437Mi          4%
+kuber02   168m         2%     1568Mi          4%
+kuber03   220m         2%     1656Mi          5%
+```
+
+# Deploy ingress controller
+I got standart manifest and make some changes  
+https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.44.0/deploy/static/provider/baremetal/deploy.yaml
+```
+ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: http
+    nodePort: 30080  <== here
+  - name: https
+    port: 443
+    protocol: TCP
+    targetPort: https
+    nodePort: 30443  <== and here
+```
+And kubectl apply -f deploy.yaml
+After that I know ingress ports for configuration external LB
+
