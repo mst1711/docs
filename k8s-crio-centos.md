@@ -1,4 +1,4 @@
-S: CentOS7 with SELinux disabled**  
+**OS: CentOS7 with SELinux disabled**  
 **Kubernetes: 1.20.4**  
 **CRI-O: 1.20**  
 
@@ -75,8 +75,16 @@ backend kubernetes-backend
     server kmaster2 [node_ip]:6443 check fall 3 rise 2
     server kmaster3 [node_ip]:6443 check fall 3 rise 2
 ```
+Execute on first master node
 ```
 kubeadm init --control-plane-endpoint="lb.domain.name:6443" --upload-certs --apiserver-advertise-address=[current_node_ip] --pod-network-cidr=192.168.0.0/16
 ```
+And after execute kubeadm join ... on other nodes with --apiserver-advertise-address=[current_node_ip] on each node
+
+> :info: Чтобы на мастер ноде запускались поды
+kubectl taint nodes [nodename] node-role.kubernetes.io/master-
+или
+kubectl taint nodes --all node-role.kubernetes.io/master-
+
 
 
