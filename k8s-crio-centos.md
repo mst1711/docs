@@ -81,7 +81,7 @@ kubeadm init --control-plane-endpoint="lb.domain.name:6443" --upload-certs --api
 ```
 And after execute kubeadm join ... on other nodes with --apiserver-advertise-address=[current_node_ip] on each node
 
-| Чтобы на мастер ноде запускались поды
+| :INFO: Чтобы на мастер ноде запускались поды
 | kubectl taint nodes [nodename] node-role.kubernetes.io/master-
 | или
 | kubectl taint nodes --all node-role.kubernetes.io/master-
