@@ -309,5 +309,6 @@ ports:
     nodePort: 30443  <== and here
 ```
 And kubectl apply -f deploy.yaml  
-After that I know ingress ports for configuration external LB
+After that I know ingress ports for configuration external LB    
 
+Article in the process of supplementing...
